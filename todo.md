@@ -18,7 +18,7 @@ Humans will be quicker to identify animate objects than inanimate objects.
 
 ## Methods
 
-Display images of either real animals or stuffed animals, ask for a (time-limited) keyboard response indicating (a)nimate, (i)nanimate.
+Display images of either real or toy living things, ask for a (time-limited) keyboard response indicating (a)nimate, (i)nanimate.
 - include the user input instructions with each image
 - separate the images with short post-trial gaps
 
@@ -32,7 +32,8 @@ You'll have to use your imagination to assume that we go on to measure the resul
 
 A `timeline` with:
   - `jsPsychHtmlKeyboardResponse`: welcome/instructions
-  - two `jsPsychImageKeyboardResponse` trials: one grizzly bear, and one teddy bear.
+  - four `jsPsychImageKeyboardResponse` trials: one grizzly bear, one teddy bear, one doll, and one person.
+End with `jsPsych.data.displayData()`
 
 Here is a simple flowchart of the experiment program.
 [placeholder]
