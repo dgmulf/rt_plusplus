@@ -7,7 +7,7 @@ flowchart TD
     I3[<code>jsPsychImageKeyboardResponse</code><br/>Doll]
     I4[<code>jsPsychImageKeyboardResponse</code><br/>Model]
 
-    W --> I1 --> I2 --> I3 --> I4
+    W -->|500ms| I1 -->|500ms| I2 -->|500ms| I3 -->|500ms| I4
   end
 
   D["<code>jsPsych.data.displayData()</code>"]
