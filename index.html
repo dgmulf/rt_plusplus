@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <title>rt experiment</title>
+        <script src="https://unpkg.com/jspsych@8.0.0"></script>
+        <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+        <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script>
+        <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
+        <link
+            href="https://unpkg.com/jspsych@8.0.0/css/jspsych.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+    </head>
+
+    <body></body>
+    <script>
+        var jsPsych = initJsPsych({
+            on_finish: function () {
+                jsPsych.data.displayData();
+            },
+        });
+
+        var timeline = [];
+
+        var preload = {
+            type: jsPsychPreload,
+            images: [
+                "stimuli/grizzly.jpg",
+                "stimuli/teddy.jpg",
+                "stimuli/doll.jpg",
+                "stimuli/cosplay.jpg",
+            ],
+        };
+        timeline.push(preload);
+
+        var welcome = {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: "Welcome to the experiment. Press any key to begin.",
+        };
+        timeline.push(welcome);
+
+        var instructions = {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: `
+   <p>In this experiment, you will see images of living things or toys.</p>
+   <p>Press the letter <b>a</b> if the image is <b>animate</b>.</p>
+   <p>Press the letter <b>i</b> if the image is <b>inanimate</b>.</p>
+   <p>Please respond as quickly and accurately as you can. Each image is time-limited.</p>
+   <p>Press any key to begin.</p>
+ `,
+        };
+        timeline.push(instructions);
+
+        var response_prompt =
+            "<p>Press <b>a</b> for <u>a</u>nimate. Press <b>i</b> for <u>i</u>nanimate.</p>";
+
+        var grizzly_trial = {
+            type: jsPsychImageKeyboardResponse,
+            stimulus: "stimuli/grizzly.jpg",
+            choices: ["a", "i"],
+            prompt: response_prompt,
+            trial_duration: 1500,
+            post_trial_gap: 500,
+            data: { label: "grizzly", correct_response: "a" },
+            on_finish: function (data) {
+                data.correct = data.response === data.correct_response;
+            },
+        };
+
+        var teddy_trial = {
+            type: jsPsychImageKeyboardResponse,
+            stimulus: "stimuli/teddy.jpg",
+            choices: ["a", "i"],
+            prompt: response_prompt,
+            trial_duration: 1500,
+            post_trial_gap: 500,
+            data: { label: "teddy", correct_response: "i" },
+            on_finish: function (data) {
+                data.correct = data.response === data.correct_response;
+            },
+        };
+
+        var doll_trial = {
+            type: jsPsychImageKeyboardResponse,
+            stimulus: "stimuli/doll.jpg",
+            choices: ["a", "i"],
+            prompt: response_prompt,
+            trial_duration: 1500,
+            post_trial_gap: 500,
+            data: { label: "doll", correct_response: "i" },
+            on_finish: function (data) {
+                data.correct = data.response === data.correct_response;
+            },
+        };
+
+        var person_trial = {
+            type: jsPsychImageKeyboardResponse,
+            stimulus: "stimuli/cosplay.jpg",
+            choices: ["a", "i"],
+            prompt: response_prompt,
+            trial_duration: 1500,
+            post_trial_gap: 500,
+            data: { label: "person", correct_response: "a" },
+            on_finish: function (data) {
+                data.correct = data.response === data.correct_response;
+            },
+        };
+
+        timeline.push(grizzly_trial, teddy_trial, doll_trial, person_trial);
+
+        jsPsych.run(timeline);
+    </script>
+</html>
