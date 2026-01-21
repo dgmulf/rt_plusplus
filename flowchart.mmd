@@ -1,0 +1,14 @@
+%%{init: {'theme':'forest','look':'handDrawn'}}%%
+flowchart TD
+  subgraph TL["<code>timeline[]</code>"]
+    W[<code>jsPsychHtmlKeyboardResponse</code><br/>Welcome + Instructions]
+    I1[<code>jsPsychImageKeyboardResponse</code><br/>Teddy Bear]
+    I2[<code>jsPsychImageKeyboardResponse</code><br/>Grizzly Bear]
+    I3[<code>jsPsychImageKeyboardResponse</code><br/>Doll]
+    I4[<code>jsPsychImageKeyboardResponse</code><br/>Model]
+
+    W --> I1 --> I2 --> I3 --> I4
+  end
+
+  D["<code>jsPsych.data.displayData()</code>"]
+  I4 --> D

@@ -36,4 +36,4 @@ A `timeline` with:
 End with `jsPsych.data.displayData()`
 
 Here is a simple flowchart of the experiment program.
-[placeholder]
+See [flowchart.mmd](flowchart.mmd)
